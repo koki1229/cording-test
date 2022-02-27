@@ -15,7 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//一覧
 Route::get('task', 'TaskController@index');
+//新規追加
 Route::get('task/add', 'TaskController@add');
 Route::post('task/add', 'TaskController@create');
+//編集
+Route::get('task/edit', 'TaskController@edit');
+Route::post('task/edit', 'TaskController@update');
+//削除
+Route::post('task/delete', 'TaskController@delete');
+
+
 
