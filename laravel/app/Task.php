@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Task extends Model
 {
@@ -14,4 +15,7 @@ class Task extends Model
         'name' => 'required|max:64',
         'user_id' => 'integer',
     );
+
+    use Sortable;
+    public $sortable = ['created_at'];
 }

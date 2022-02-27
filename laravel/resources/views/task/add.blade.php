@@ -26,7 +26,7 @@
             </tr>
             <tr>
                 <th>本文</th>
-                <td><textarea name="body" value="{{old('body')}}"></textarea></td>
+                <td><textarea name="body">{{old('body')}}</textarea></td>
             </tr>
             <tr>
                 <th></th>

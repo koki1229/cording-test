@@ -4,7 +4,7 @@
 
 @section('menubar')
     @parent
-    新規作成ページ
+    編集ページ
 @endsection
 
 @section('content')
@@ -17,30 +17,31 @@
         </ul>
     </div>
     @endif
-    <form action="/laravel/public/task/add" method="post">
+    <form action="/laravel/public/task/edit" method="post">
         <table>
             @csrf
+            <input type="hidden" name="id" value="{{$form->id}}"
             <tr>
                 <th>タイトル</th>
-                <td><input type="text" name="name" value="{{old('name')}}"></td>
+                <td><input type="text" name="name" value="{{$form->name}}"></td>
             </tr>
             <tr>
                 <th>本文</th>
-                <td><textarea name="body" value="{{old('body')}}"></textarea></td>
+                <td><textarea name="body">{{$form->body}}</textarea></td>
             </tr>
-            <!-- <tr>
+            <tr>
                 <th>ステータス</th>
-                <td>
+                <td class="d-flex">
                     <div>
-                        <input type="radio" name="status_flg" id="status_flg_0" value="0" {{ old('status_flg') == '0' ? 'checked' : '' }} checked>
-                        <label for="status_flg_0">未対応</label>
+                        <input type="radio" name="status_flg" id="status_flg_0" value="0" {{ $form->status_flg == '0' ? 'checked' : '' }}>
+                        <label for="status_flg_0">未対応　</label>
                     </div>
                     <div>
-                        <input type="radio" name="status_flg" id="status_flg_1" value="1"　{{ old('status_flg') == '1' ? 'checked' : '' }}>
+                        <input type="radio" name="status_flg" id="status_flg_1" value="1" {{ $form->status_flg == '1' ? 'checked' : '' }}>
                         <label for="status_flg_1">完了</label>
                     </div>
                 </td>
-            </tr> -->
+            </tr>
             <tr>
                 <th></th>
                 <td><input type="submit" value="保存"></td>
