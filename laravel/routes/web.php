@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 //一覧
 Route::get('task', 'TaskController@index');
 //新規追加
@@ -28,3 +29,8 @@ Route::post('task/delete', 'TaskController@delete');
 
 
 
+=======
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> feature-auth
