@@ -10,11 +10,22 @@ use Illuminate\Support\Facades\Auth;
 class TaskController extends Controller
 {
     public function index(Request $request){
-        $items = Task::sortable()
-            ->orderBy('id', 'desc')
-            ->paginate(5);
 
-        return view('task.index', ['items' => $items]);
+        $where = array();
+        if((!isset($request->search_status_flg)) || $request->search_status_flg != 1){
+            $where[] = ['status_flg', '=', 0];
+        }
+
+        if(isset($request->search_name) && $request->search_name){
+            $where[] = ['name', 'like', '%' . $request->search_name . '%'];
+        }
+
+        $items = Task::sortable()
+            ->where($where)
+            ->orderBy('id', 'desc')
+            ->paginate(2);
+
+        return view('task.index', ['items' => $items, 'request' => $request]);
     }
 
     public function add(Request $request){

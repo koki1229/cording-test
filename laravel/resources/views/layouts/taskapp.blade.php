@@ -18,6 +18,7 @@ td {border: solid 1px #aaa; color:#999; padding:5px 10px; }
 </style>
 </head>
 <body>
+    
     <h1>@yield('title')</h1>
     @section('menubar')
     <h2 class="menutitle">※メニュー</h2>

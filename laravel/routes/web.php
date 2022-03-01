@@ -12,20 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->middleware('auth');
 
 //一覧
-Route::get('task', 'TaskController@index');
+Route::get('task', 'TaskController@index')->middleware('auth');
+Route::post('task', 'TaskController@serch')->middleware('auth');
+
 //新規追加
-Route::get('task/add', 'TaskController@add');
-Route::post('task/add', 'TaskController@create');
+Route::get('task/add', 'TaskController@add')->middleware('auth');
+Route::post('task/add', 'TaskController@create')->middleware('auth');
 //編集
-Route::get('task/edit', 'TaskController@edit');
-Route::post('task/edit', 'TaskController@update');
+Route::get('task/edit', 'TaskController@edit')->middleware('auth');
+Route::post('task/edit', 'TaskController@update')->middleware('auth');
 //削除
-Route::post('task/delete', 'TaskController@delete');
+Route::post('task/delete', 'TaskController@delete')->middleware('auth');
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');

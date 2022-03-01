@@ -11,6 +11,27 @@
 @endsection
 
 @section('content')
+
+<h2>検索条件を入力してください</h2>
+<form class="row g-3" action="/laravel/public/task" method="get">
+
+    <div class="col-12">
+        <label class="form-label">タイトル</label>
+        <input type="text" class="form-control" name="search_name" value="{{ $request->search_name }}">
+    </div>
+    <div class="col-12">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="1" name="search_status_flg" id="flexCheckDefault" {{ $request->search_status_flg == 1 ?'checked':'' }} >
+            <label class="form-check-label" for="flexCheckDefault">
+            完了済を表示
+            </label>
+        </div>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">検索</button>
+    </div>
+</form>
+
     <table>
         <tr>
             <th>タイトル</th>
