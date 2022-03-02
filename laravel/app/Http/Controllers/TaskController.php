@@ -11,7 +11,7 @@ class TaskController extends Controller
 {
     public function index(Request $request){
 
-        $where = array();
+        $where = array(['user_id', '=', Auth::id()]);
         if((!isset($request->search_status_flg)) || $request->search_status_flg != 1){
             $where[] = ['status_flg', '=', 0];
         }

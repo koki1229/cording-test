@@ -16,9 +16,10 @@ class RegisterMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($name, $to_email)
     {
-        //
+        $this->name = $name;
+        $this->to_email = $to_email;
     }
 
     /**
@@ -28,6 +29,9 @@ class RegisterMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->to($this->to_email)// 送信先アドレス
+        ->subject('登録が完了しました。')// 件名
+        ->view('registers.register_mail')//本文
+        ->with(['name' => $this->name]);
     }
 }

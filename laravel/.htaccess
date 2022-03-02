@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteBase /
+
+#除外設定
+RewriteCond %{REQUEST_URI} !(^/gwa261haer153gr/)
+
+#リダイレクト
+RewriteRule ^(.*)$ /public/ [R=301,L]
