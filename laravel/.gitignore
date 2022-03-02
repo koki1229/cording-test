@@ -1,9 +1,16 @@
+/config/database.php
+/config/databasebak.php
 /node_modules
 /public/hot
 /public/storage
 /storage/*.key
 /vendor
+/gwa261haer153gr
+.htaccess
+.htpasswd
+.DS_Store
 .env
+.envbak
 .env.backup
 .phpunit.result.cache
 Homestead.json
