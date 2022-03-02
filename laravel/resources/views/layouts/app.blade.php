@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
     <div id="app">
@@ -76,5 +79,11 @@
             @yield('content')
         </main>
     </div>
+
+    <footer class="footer mt-4 py-3">
+        <div class="container text-center">
+            <p class="text-muted">©︎ <?php echo date('Y');?> Koki Katsumoto.</p>
+        </div>
+    </footer>
 </body>
 </html>

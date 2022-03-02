@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">メニュー</div>
 
                 <div class="card-body">
-                    <a href="/laravel/public/task">タスク一覧</a>
+                    <a href="/public/task">タスク一覧</a>
                     <!-- @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
