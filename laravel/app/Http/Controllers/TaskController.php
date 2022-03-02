@@ -11,19 +11,26 @@ class TaskController extends Controller
 {
     public function index(Request $request){
 
+        //where条件格納（デフォルトはログインユーザのデータのみ）
         $where = array(['user_id', '=', Auth::id()]);
+        //完了済みにチェック有りの場合条件追加
         if((!isset($request->search_status_flg)) || $request->search_status_flg != 1){
             $where[] = ['status_flg', '=', 0];
         }
 
+        //タイトル検索が有りの場合where追加
         if(isset($request->search_name) && $request->search_name){
             $where[] = ['name', 'like', '%' . $request->search_name . '%'];
         }
 
+        //データ取得
         $items = Task::sortable()
+            //絞り込み条件
             ->where($where)
+            //デフォルトはID降順
             ->orderBy('id', 'desc')
-            ->paginate(2);
+            //10件づつ表示
+            ->paginate(10);
 
         return view('task.index', ['items' => $items, 'request' => $request]);
     }
@@ -39,16 +46,23 @@ class TaskController extends Controller
         $task = new Task;
         //保存する値
         $form = $request->all();
+        //不要データの削除
         unset($form['_token']);
-        // $form['user_id'] = Auth::id();
-        $form['user_id'] = 1;
+        //登録ユーザID取得
+        $form['user_id'] = Auth::id();
         //値セット保存　
         $task->fill($form)->save();
         //一覧画面へ遷移
         return redirect('/task');
     }
 
+    public function view(Request $request){
+        $task = Task::find($request->id);
+        return view('task.view', ['task' => $task]);
+    }
+
     public function edit(Request $request){
+        //データ取得
         $task = Task::find($request->id);
         return view('task.edit', ['form' => $task]);
     }
@@ -68,6 +82,7 @@ class TaskController extends Controller
     }
 
     public function delete(Request $request){
+        //削除実行
         Task::find($request->id)->delete();
         return redirect('/task');
     }
